@@ -40,8 +40,8 @@ d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(da
         .range([height, 0]);
 
     // create axis functions
-    const bottomAxis = d3.axisBottom(xLinearScale);
-    const leftAxis = d3.axisLeft(yLinearScale);
+    const bottomAxis = d3.axisBottom(xLinearScale.nice());
+    const leftAxis = d3.axisLeft(yLinearScale.nice());
 
     // append axes to the chart
     chartGroup.append("g")
@@ -49,5 +49,8 @@ d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(da
         .call(bottomAxis);
     chartGroup.append("g")
         .call(leftAxis);
+
+    // create circles
+
 
 }).catch(e => console.log(e));
