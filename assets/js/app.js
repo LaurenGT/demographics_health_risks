@@ -51,6 +51,12 @@ d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(da
         .call(leftAxis);
 
     // create circles
-
+    const circleGroup = chartGroup.selectAll("circe")
+        .data(data)
+        .join("circle")
+        .attr("cx", d => xLinearScale(d.healthcare))
+        .attr("cy", d => yLinearScale(d.obesity))
+        .attr("r", "7")
+        .attr("fill", "lightblue");
 
 }).catch(e => console.log(e));
