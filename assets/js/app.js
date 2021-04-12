@@ -28,6 +28,26 @@ const chartGroup = svg.append("g")
 d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(data => {
     console.log(data);
 
+    // compare healthcare and obesity through scatter plot
+
+    // create scale functions
+    const xLinearScale = d3.scaleLinear()
+        .domain([d3.min(data, d => d.healthcare), d3.max(data, d => d.healthcare)])
+        .range([0, width]);
     
+    const yLinearScale = d3.scaleLinear()
+        .domain([d3.min(data, d => d.obesity), d3.max(data, d => d.obesity)])
+        .range([height, 0]);
+
+    // create axis functions
+    const bottomAxis = d3.axisBottom(xLinearScale);
+    const leftAxis = d3.axisLeft(yLinearScale);
+
+    // append axes to the chart
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(bottomAxis);
+    chartGroup.append("g")
+        .call(leftAxis);
 
 }).catch(e => console.log(e));
