@@ -51,12 +51,22 @@ d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(da
         .call(leftAxis);
 
     // create circles
-    const circleGroup = chartGroup.selectAll("circe")
+    const circleGroup = chartGroup.selectAll("circle")
         .data(data)
         .join("circle")
         .attr("cx", d => xLinearScale(d.healthcare))
         .attr("cy", d => yLinearScale(d.obesity))
         .attr("r", "7")
         .attr("fill", "lightblue");
+    
+    // add state abbreviations on the
+    // const abbrGroup = chartGroup.selectAll("text")
+    //     .data(data)
+    //     .join("text")
+    //     .attr("x", d => xLinearScale(d.healthcare))
+    //     .attr("y", d => yLinearScale(d.obesity))
+    //     .text(d => d.abbr)
+    //     .attr("font-family", "sans-serif")
+    //     .attr("font-size", "10px")
 
 }).catch(e => console.log(e));
