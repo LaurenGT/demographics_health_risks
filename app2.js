@@ -192,10 +192,11 @@ d3.csv("data.csv", d3.autoType).then(censusData => {
             .enter()
             .append("text")
             .classed("stateText", true)
-            .attr("x", d => xLinearScale(d.healthcare))
+            .attr("x", d => xLinearScale(d[chosenXAxis]))
             .attr("y", d => yLinearScale(d.obesity)+3)
             .text(d => d.abbr)
             // .attr("font-family", "sans-serif")
             .attr("font-size", "10px")
+            .style("fill", "black")
 
 }).catch(e => console.log(e));
