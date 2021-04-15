@@ -25,7 +25,7 @@ const chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import data. Use autoType to cast numbers.
-d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(data => {
+d3.csv("data.csv", d3.autoType).then(data => {
     console.log(data);
 
     // compare healthcare and obesity through scatter plot
@@ -59,6 +59,14 @@ d3.csv("../demographics_health_risks/assets/data/data.csv", d3.autoType).then(da
         .attr("r", "7")
         .attr("fill", "lightblue");
     
+    // create axis labels
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - (margin.left / 2))
+        .attr("x", 0 - (height / 2) -40)
+        .attr("class", "axisText")
+        .text("Obesity Rate");
+
     // add state abbreviations on the
     // const abbrGroup = chartGroup.selectAll("text")
     //     .data(data)
