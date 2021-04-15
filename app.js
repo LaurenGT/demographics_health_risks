@@ -6,9 +6,9 @@ const svgHeight = 500
 
 const margin = {
     top: 20,
-    right: 40,
+    right: 75,
     bottom: 60,
-    left: 100
+    left: 50
 };
 
 const width = svgWidth - margin.left - margin.right;
@@ -56,13 +56,14 @@ d3.csv("data.csv", d3.autoType).then(data => {
         .join("circle")
         .attr("cx", d => xLinearScale(d.healthcare))
         .attr("cy", d => yLinearScale(d.obesity))
-        .attr("r", "7")
-        .attr("fill", "lightblue");
+        .attr("r", "10")
+        .attr("class", "stateCircle");
+        // .attr("fill", "lightblue");
     
     // create axis labels
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - (margin.left / 2))
+        .attr("y", 0 - (margin.left / 2) - 10)
         .attr("x", 0 - (height / 2) -40)
         .attr("class", "axisText")
         .text("Obesity Rate (%)");
@@ -73,13 +74,15 @@ d3.csv("data.csv", d3.autoType).then(data => {
         .text("Poverty Rate (%)");
 
     // add state abbreviations on the
-    // const abbrGroup = chartGroup.selectAll("text")
-    //     .data(data)
-    //     .join("text")
-    //     .attr("x", d => xLinearScale(d.healthcare))
-    //     .attr("y", d => yLinearScale(d.obesity))
-    //     .text(d => d.abbr)
-    //     .attr("font-family", "sans-serif")
-    //     .attr("font-size", "10px")
+    const abbrGroup = chartGroup.selectAll(null)
+        .data(data)
+        .enter()
+        .append("text")
+        .classed("stateText", true)
+        .attr("x", d => xLinearScale(d.healthcare))
+        .attr("y", d => yLinearScale(d.obesity)+3)
+        .text(d => d.abbr)
+        // .attr("font-family", "sans-serif")
+        .attr("font-size", "10px")
 
 }).catch(e => console.log(e));
