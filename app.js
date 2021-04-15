@@ -65,7 +65,12 @@ d3.csv("data.csv", d3.autoType).then(data => {
         .attr("y", 0 - (margin.left / 2))
         .attr("x", 0 - (height / 2) -40)
         .attr("class", "axisText")
-        .text("Obesity Rate");
+        .text("Obesity Rate (%)");
+    
+    chartGroup.append("text")
+        .attr("transform", `translate(${(width / 2)-40}, ${height + margin.top + 30})`)
+        .attr("class", "axisText")
+        .text("Poverty Rate (%)");
 
     // add state abbreviations on the
     // const abbrGroup = chartGroup.selectAll("text")
