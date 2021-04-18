@@ -74,7 +74,7 @@ d3.csv("data.csv", d3.autoType).then(data => {
         .text("Poverty Rate (%)");
 
     // add state abbreviations on the
-    const abbrGroup = chartGroup.selectAll(null)
+    const abbrGroup = chartGroup.selectAll("stateText")
         .data(data)
         .enter()
         .append("text")
