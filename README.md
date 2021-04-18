@@ -6,3 +6,4 @@ Depicted in this analysis is the relationship between poverty rate and obesity r
 
 Further analysis would include looking for possible outliers, determining the strength of the relationship as well as creating dynamic axes that would show the relationships between more demographics and health outcomes. 
 
+![Screenshot of Plot](https://github.com/LaurenGT/demographics_health_risks/blob/main/Images/plot_screenshot.png)
